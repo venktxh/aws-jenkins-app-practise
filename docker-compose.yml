@@ -1,0 +1,32 @@
+services:
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    restart: no
+    ports:
+      - "8082:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build: ./backend
+    container_name: backend
+    restart: no
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/studentdb
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    restart: no
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:
