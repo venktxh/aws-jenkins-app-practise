@@ -11,9 +11,10 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            steps {
-                git 'https://github.com/venktxh/aws-jenkins-app-practise.git'
-            }
+          steps {
+            git branch: 'main', 
+            url: 'https://github.com/venktxh/aws-jenkins-app-practise.git'
+          }
         }
 
         stage('Build Images') {
