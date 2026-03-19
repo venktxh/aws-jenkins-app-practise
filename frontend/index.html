@@ -99,7 +99,7 @@
     </div>
 
     <script>
-      const API = "http://backend:8081/students";
+      const API = "http://3.110.212.28:8081/students";
 
       async function addStudent() {
         const name = document.getElementById("name").value;
@@ -161,7 +161,7 @@
       }
 
       async function loadStudentDetails() {
-        const res = await fetch("http://backend:8081/student-details");
+        const res = await fetch("http://3.110.212.28:8081/student-details");
         const data = await res.json();
 
         document.getElementById("studentInfo").innerText =
